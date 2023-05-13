@@ -1,0 +1,110 @@
+#Practicing YAML
+MyName : M.Rama Selvan
+
+#We can give string three types
+MyName1 : M.Rama Selvan
+MyName2 : "M.Rama Selvan"
+MyName3 : 'M.Rama Selvan'
+
+#Lists
+MyGadgets:
+- MI mobile
+- Boult Audio Earbuds
+- Sonata Watch
+- MSI Alpha 15 Laptop
+- 4 Hand kerchiefs
+
+#Lists in Single Line 
+Solarsystem : [ Mercury , venus , earth, mars , jupiter , saturn , uranus , neptune]
+
+# Single Key value pair for Multiple lines of Data
+fruits : |
+ Apple
+ Orange
+ Mango
+
+#Write a single line in multiple lines 
+Vegetables : >
+ Tomato 
+ Potato
+ Onion
+ Brinjal
+#It is same as
+Vegetables1 :  Tomato  Potato Onion Brinjal
+
+#Data Types
+#int
+num : 16
+#float
+nums : 70.05
+#Strings
+Dep : Computer Science
+#Boolean
+BooleanValue : True # true , TRUE , YES ,Yes , yes , y , Y
+Boolean : False # false , FALSE , NO , no , No , n , N
+
+---
+#Declaring DataTypes
+rollno : !!int 79
+#we can only declare datatypes for int & float
+
+#null in YAML
+Gf : null
+#null means nothing or empty
+  
+
+#key : value pairs are called as maps !!map
+#nested mapping : map within a map
+bio: 
+ name1 : M.Rama Selvan
+ age : 20
+ Hobby : fapping
+---
+#it is also same
+bio : {name : M.Rama Selvan, age : 20 , hobby : fapping}
+
+#pairs : keys may have duplicate value
+pair-example : !!pairs
+ - job : Listener
+ - job : Student
+
+#seq: !!seq
+employee : !!seq
+ - id
+ - name
+ - deadline
+ #same as 
+employee1 : [id,name,deadline]
+
+
+#dictionary !!omap
+atti : !!omap
+ - Ram :
+    name : RamaSelvan
+    age : 20
+ - Praveen : 
+    name : M.Praveen
+    age : 20
+ - Venu : 
+    PLace : Hosur
+
+#anchors in yaml
+#anchors are used for reusing the datas 
+Place : &address
+   district : Chennai
+   College : Kings
+
+Ram :
+   Type : Day Scholar
+   <<: *address
+
+Praveen :
+    Type : Day Scholar
+    << : *TYPES
+    
+
+Venu : 
+    Type  : Hostel
+    << : *address
+    district : Hosur
+
